@@ -35,7 +35,7 @@ public class ProcessConfigs {
             Configuration configOrig = configs.properties(new File(String.format("src/main/resources/611/%s.properties", filename)));
             Iterator<String> keys = config.getKeys();
 
-            for (; keys.hasNext(); ) {
+            while (keys.hasNext()) {
                 String s = keys.next();
                 String s2 = config.getString(s);
                 String s3 = configOrig.getString(s);
