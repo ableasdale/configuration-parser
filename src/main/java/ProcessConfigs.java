@@ -35,13 +35,13 @@ public class ProcessConfigs {
             Configuration configOrig = configs.properties(new File(String.format("src/main/resources/611/%s.properties", filename)));
             Iterator<String> keys = config.getKeys();
 
-            for (Iterator<String> it = keys; it.hasNext(); ) {
-                String s = it.next();
+            for (; keys.hasNext(); ) {
+                String s = keys.next();
                 String s2 = config.getString(s);
                 String s3 = configOrig.getString(s);
                 sb.append(s).append("\t").append(s2).append("\t").append(s3).append("\t").append(s2.equals(s3) ? "match" : "no-match").append("\n");
                 if (!s2.equals(s3)) {
-                    LOG.info(String.format("%s - %s - %s - %s", s, s2, s3, s2.equals(s3) ? "match" : "no-match"));
+                    LOG.info(String.format("%s - %s - %s - %s", s, s2, s3, "no-match"));
                 }
             }
             // write the file
