@@ -29,7 +29,7 @@ public class ProcessConfigs {
     private static void processConfigs(String filename, Configurations configs) {
         LOG.info(String.format("Processing: %s properties\n======", filename));
         StringBuilder sb = new StringBuilder();
-        sb.append("Property Name,Property,Original Property,Match?\n");
+        sb.append("Property Name\tProperty\tOriginal Property\tMatch?\n");
         try {
             Configuration config = configs.properties(new File(String.format("src/main/resources/%s.properties", filename)));
             Configuration configOrig = configs.properties(new File(String.format("src/main/resources/611/%s.properties", filename)));
@@ -39,7 +39,7 @@ public class ProcessConfigs {
                 String s = it.next();
                 String s2 = config.getString(s);
                 String s3 = configOrig.getString(s);
-                sb.append(s).append(",").append(s2).append(",").append(s3).append(",").append(s2.equals(s3) ? "match" : "no-match").append("\n");
+                sb.append(s).append("\t").append(s2).append("\t").append(s3).append("\t").append(s2.equals(s3) ? "match" : "no-match").append("\n");
                 if (!s2.equals(s3)) {
                     LOG.info(String.format("%s - %s - %s - %s", s, s2, s3, s2.equals(s3) ? "match" : "no-match"));
                 }
