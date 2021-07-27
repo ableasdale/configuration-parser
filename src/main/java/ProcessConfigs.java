@@ -44,7 +44,7 @@ public class ProcessConfigs {
                     LOG.info(String.format("%s - %s - %s - %s", s, s2, s3, "no-match"));
                 }
             }
-            // write the file
+
             BufferedWriter writer = new BufferedWriter(new FileWriter(String.format("src/main/resources/%s.csv", filename)));
             writer.write(sb.toString());
             writer.close();
